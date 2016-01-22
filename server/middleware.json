@@ -1,0 +1,54 @@
+{
+  "initial:before": {
+    "loopback#favicon": {
+      "params": "$!../client/favicon.ico"
+    },
+    "loopback#static": {
+      "params": "$!../client"
+    }
+  },
+  "initial": {
+    "compression": {},
+    "cors": {
+      "params": {
+        "origin": true,
+        "credentials": true,
+        "maxAge": 86400
+      }
+    }
+  },
+  "session:before": {
+    "./middleware/cookie.js": {},
+    "./middleware/session.js": {}
+  },
+  "auth": {
+    "./middleware/context.js": {},
+    "./middleware/auth.js": {
+      "params": {
+        "ignore": [
+          "/api/Users",
+          "/api/Users/login",
+          "/explorer/",
+          "/explorer"
+        ]
+      }
+    }
+  },
+  "parse": {
+    "./middleware/multipart.js": {}
+  },
+  "routes": {
+    "./middleware/rest.js": {
+      "paths": [
+        "${restApiRoot}"
+      ]
+    }
+  },
+  "files": {},
+  "final": {
+    "loopback#urlNotFound": {}
+  },
+  "final:after": {
+    "loopback#errorHandler": {}
+  }
+}

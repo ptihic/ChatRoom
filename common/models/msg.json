@@ -1,0 +1,30 @@
+{
+  "name": "Msg",
+  "base": "Entity",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "UserId": {
+      "type": "number",
+      "required": true
+    },
+    "UserName": {
+      "type": "string",
+      "required": true
+    },
+    "PostTime": {
+      "type": "string",
+      "required": true
+    },
+    "PostMsg": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

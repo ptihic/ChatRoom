@@ -1,0 +1,36 @@
+{
+  "name": "Group",
+  "base": "Entity",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "UUID": {
+      "type": "number",
+      "required": true
+    },
+    "UserId": {
+      "type": "number",
+      "required": true
+    },
+    "UserName": {
+      "type": "number",
+      "required": true
+    },
+    "FriendId": {
+      "type": "number",
+      "required": true
+    },
+    "FriendName": {
+      "type": "string"
+    },
+    "LastTime": {
+      "type": "Date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

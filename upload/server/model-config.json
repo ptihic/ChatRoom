@@ -1,0 +1,50 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "../common/models/base",
+      "./models",
+      "./models/app"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "LoginUser": {
+    "dataSource": "db",
+    "public": true
+  },
+  "User": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "UserToken": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "VisitLog": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "OptionLog": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Code": {
+    "dataSource": "mysql",
+    "public": true
+  }
+}
