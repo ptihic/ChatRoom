@@ -50,7 +50,7 @@
           </div>
         </div>
         <hr class="am-article-divider blog-hr">
-        <div class="text am-u-lg-">
+        <div class="text">
           <form class="" action="index.html" method="post">
             <div class="am-form-group">
               <label for="doc-ta-1">请输入对话内容</label>
@@ -73,11 +73,6 @@
     </div>
     <div class="am-u-md-4 blog-sidebar" style="background: #eeeeee">
       <div class="am-panel-hd">好友列表</div>
-      <!-- <ul class="am-g blog-team friendlist">
-        <template v-for='friend  in friendList'>
-          <li><a href="#">{{friend.friName}}</a></li>
-        </template>
-    </ul> -->
       <ul class="am-list admin-sidebar-list" id="collapase-nav-1">
         <li class="am-panel">
         <a data-am-collapse="{parent: '#collapase-nav-1', target: '#role-nav'}">
@@ -85,7 +80,7 @@
         </a>
         <ul class="am-list am-collapse admin-sidebar-sub" id="role-nav">
           <template v-for='friend  in friendList'>
-            <li><a href="#">{{friend.friName}}</a></li>
+            <li><a>{{friend.FriendName}}</a></li>
           </template>
         </ul>
         </li>
@@ -140,22 +135,7 @@ module.exports = {
           postMsg:'Are you ok?',
           postTime:'2016-01-18 08:03:00'
         }],
-        friendList:[{
-          friId:1,
-          friName:'李曼丽'
-        },
-        {
-          friId:2,
-          friName:'张星'
-        },
-        {
-          friId:3,
-          friName:'游新月'
-        },
-        {
-          friId:4,
-          friName:'吴琦'
-        }]
+        friendList:this.friendList
       };
 
     },
@@ -164,7 +144,7 @@ module.exports = {
         var $this=this;
         var text = $this.newTodo.trim()
         if (text) {
-          $this.$http.post(tools.resolveUrl("/Msg/"),{
+          $this.$http.post(tools.resolveUrl("/Msgs/"),{
             userId:$this.IUserId,
             userName:$this.IUserName,
             postMsg:text,
@@ -178,7 +158,22 @@ module.exports = {
       },
       show: function () {
       }
+    },
+    created:function (argument) {
+      // body...
+  var $this=this;
+      $this.$http.get(tools.resolveUrl("/Friends"),{
+          filter:{
+            where:{
+              UserId:0
+            }
+          }
+      },function(res){
+      $this.friendList=res;
+      })
+
     }
+
 }
 
 </script>

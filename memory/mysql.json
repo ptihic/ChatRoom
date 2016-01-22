@@ -1,11 +1,11 @@
 {
   "ids": {
     "User": 8,
-    "UserToken": 16,
+    "UserToken": 17,
     "VisitLog": 1,
     "OptionLog": 1,
     "Code": 1,
-    "Friend": 1,
+    "Friend": 7,
     "Msg": 1,
     "Group": 1
   },
@@ -34,12 +34,18 @@
       "12": "{\"userId\":4,\"tokenInfo\":\"182c18b1-0a47-4c93-99a2-866606c39ea5\",\"id\":12,\"state\":1}",
       "13": "{\"userId\":4,\"tokenInfo\":\"b70b68c8-d2a4-4e1c-9765-ba1d9fc82d9a\",\"id\":13,\"state\":1}",
       "14": "{\"userId\":4,\"tokenInfo\":\"1044046d-3d83-4c22-b0b0-f45d73236c9f\",\"id\":14,\"state\":1}",
-      "15": "{\"userId\":4,\"tokenInfo\":\"be284860-350b-4e81-b79b-202ab6bc31c4\",\"id\":15,\"state\":1}"
+      "15": "{\"userId\":4,\"tokenInfo\":\"be284860-350b-4e81-b79b-202ab6bc31c4\",\"id\":15,\"state\":1}",
+      "16": "{\"userId\":4,\"tokenInfo\":\"4fdbf031-7981-448a-8358-136ed4e0fc6e\",\"id\":16,\"state\":1}"
     },
     "VisitLog": {},
     "OptionLog": {},
     "Code": {},
-    "Friend": {},
+    "Friend": {
+      "1": "{\"UserId\":0,\"FriendId\":1,\"FriendName\":\"张星\",\"id\":1}",
+      "2": "{\"UserId\":0,\"FriendId\":3,\"FriendName\":\"李曼丽\",\"id\":2}",
+      "3": "{\"UserId\":0,\"FriendId\":4,\"FriendName\":\"杨继文\",\"id\":3}",
+      "4": "{\"UserId\":0,\"FriendId\":5,\"FriendName\":\"肖性魁\",\"id\":4}"
+    },
     "Msg": {},
     "Group": {}
   }
