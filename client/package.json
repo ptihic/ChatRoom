@@ -11,7 +11,7 @@
     "gulp": "gulp default"
   },
   "dependencies": {
-    "socket.io": "^1.3.7",
+    "socket.io-client": "^1.4.4",
     "vue": "^1.0.0",
     "vue-resource": "^0.1.17",
     "vue-router": "^0.7.7"

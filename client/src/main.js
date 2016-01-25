@@ -6,6 +6,11 @@ var VueRouter = require('vue-router');
 var VueResource = require('vue-resource');
 var tools = require('./tools');
 var auth = require('./auth');
+var socket = require('socket.io-client');
+
+Vue.use(function(vue){
+  vue.prototype.$socket=socket;
+});
 
 //layout
 Vue.use(VueRouter);
