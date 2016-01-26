@@ -6,6 +6,10 @@
     "validateUpsert": true
   },
   "properties": {
+    "GroupId": {
+      "type": "string",
+      "required": true
+    },
     "UserId": {
       "type": "number",
       "required": true

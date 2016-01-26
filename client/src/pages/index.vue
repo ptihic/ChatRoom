@@ -126,7 +126,11 @@
         //loadMsg;
       },
       posting: function (friendId, msg) {
+        var $this = this;
+        var $chat = $this.chat;
+        $chat.emit('posting', function (res) {
 
+        });
       }
     },
     ready: function () {
@@ -145,14 +149,8 @@
     created: function (argument) {
       // body...
       var $this = this;
-      $this.$http.get(tools.resolveUrl("/Friends"), {
-        filter: {
-          where: {
-            UserId: 0
-          }
-        }
-      }, function (res) {
-        $this.friendList = res;
+      $this.$http.get(tools.resolveUrl("/Friends/mine"),function (res) {
+        $this.friendList = res.friendList;
       })
     }
   }
