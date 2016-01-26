@@ -1,12 +1,12 @@
 {
   "ids": {
     "User": 8,
-    "UserToken": 72,
+    "UserToken": 84,
     "VisitLog": 1,
     "OptionLog": 1,
     "Code": 1,
     "Friend": 7,
-    "Msg": 9,
+    "Msg": 10,
     "Group": 1
   },
   "models": {
@@ -90,7 +90,19 @@
       "68": "{\"userId\":4,\"tokenInfo\":\"99ae2a7b-c307-4d49-be65-2a06c47b8ab9\",\"id\":68,\"state\":1}",
       "69": "{\"userId\":4,\"tokenInfo\":\"53948565-6094-43de-9959-9feecc008022\",\"id\":69,\"state\":1}",
       "70": "{\"userId\":4,\"tokenInfo\":\"f3d2b662-0505-4971-897f-f10f5bf6e022\",\"id\":70,\"state\":1}",
-      "71": "{\"userId\":4,\"tokenInfo\":\"2da07fb1-374b-4e2a-b8a6-52157a8e8505\",\"id\":71,\"state\":1}"
+      "71": "{\"userId\":4,\"tokenInfo\":\"2da07fb1-374b-4e2a-b8a6-52157a8e8505\",\"id\":71,\"state\":1}",
+      "72": "{\"userId\":1,\"tokenInfo\":\"30770bd8-bb77-45b5-a01c-2f8583304ada\",\"id\":72,\"state\":1}",
+      "73": "{\"userId\":1,\"tokenInfo\":\"71cdbb3a-76d1-40be-aa29-cd967438e2a1\",\"id\":73,\"state\":1}",
+      "74": "{\"userId\":1,\"tokenInfo\":\"08a404ab-5e38-42c0-96ab-47bfbb9adfc9\",\"id\":74,\"state\":1}",
+      "75": "{\"userId\":1,\"tokenInfo\":\"28a9f11f-0981-43fc-a4b6-8652dfc69e2d\",\"id\":75,\"state\":1}",
+      "76": "{\"userId\":1,\"tokenInfo\":\"6aaebc7b-5b0e-4457-aa3e-a2dbba5d6523\",\"id\":76,\"state\":1}",
+      "77": "{\"userId\":1,\"tokenInfo\":\"879939dd-958b-4aee-a2d6-152d959c7a5c\",\"id\":77,\"state\":1}",
+      "78": "{\"userId\":1,\"tokenInfo\":\"b2021dba-bbf1-46d8-a133-75313863a180\",\"id\":78,\"state\":1}",
+      "79": "{\"userId\":1,\"tokenInfo\":\"03835918-732e-439e-a000-860a33bbf80d\",\"id\":79,\"state\":1}",
+      "80": "{\"userId\":1,\"tokenInfo\":\"eab58cae-f4cd-4379-8273-076c4f394913\",\"id\":80,\"state\":1}",
+      "81": "{\"userId\":1,\"tokenInfo\":\"74464b54-e486-4ace-b03b-1b076e3e3979\",\"id\":81,\"state\":1}",
+      "82": "{\"userId\":1,\"tokenInfo\":\"185311cf-9a97-46de-bff5-d35d5fa2aa1e\",\"id\":82,\"state\":1}",
+      "83": "{\"userId\":1,\"tokenInfo\":\"57133b24-fedc-4ec8-a2c4-94b00b7c3e50\",\"id\":83,\"state\":1}"
     },
     "VisitLog": {},
     "OptionLog": {},
@@ -109,7 +121,8 @@
       "5": "{\"UserId\":1,\"UserName\":\"me\",\"PostTime\":\"2016-01-25 11:21:53\",\"PostMsg\":\"asdfasdf\",\"id\":5}",
       "6": "{\"UserId\":1,\"UserName\":\"me\",\"PostTime\":\"2016-01-25 15:27:40\",\"PostMsg\":\"lss\",\"id\":6}",
       "7": "{\"UserId\":1,\"UserName\":\"me\",\"PostTime\":\"2016-01-25 16:14:21\",\"PostMsg\":\"l m l\",\"id\":7}",
-      "8": "{\"UserId\":1,\"UserName\":\"me\",\"PostTime\":\"2016-01-26 09:07:00\",\"PostMsg\":\"lss\",\"id\":8}"
+      "8": "{\"UserId\":1,\"UserName\":\"me\",\"PostTime\":\"2016-01-26 09:07:00\",\"PostMsg\":\"lss\",\"id\":8}",
+      "9": "{\"UserId\":1,\"UserName\":\"me\",\"PostTime\":\"2016-01-26 13:37:55\",\"PostMsg\":\"1212\",\"id\":9}"
     },
     "Group": {}
   }
