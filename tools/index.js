@@ -160,6 +160,12 @@ pub.getDateExp = function (exp) {
   return new Date(timeArr.join("/"))
 };
 
+pub.error = function (msg, code) {
+  var error = new Error(msg);
+  error.status = code || 500;
+  delete error.stack;
+  return error;
+};
 
 pub.logger = logger;
 
