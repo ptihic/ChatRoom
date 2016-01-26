@@ -13,60 +13,142 @@ module.exports = function (app) {
     res.send("ok");
   }
 
-  var postAllMsg = function (socket) {
+  var userTK = "userTK";
+  var GMId = "GMId";
+
+  var setUser = function (socket, user) {
+    var handshakeData = socket.request;
+    handshakeData["userTK"] = user;
+  };
+
+  var getUser = function (socket) {
+    var handshakeData = socket.request;
+    return handshakeData["userTK"] || {};
+  };
+
+  var setGMId = function (socket, groupId, msgId) {
+    var handshakeData = socket.request;
+    if (!handshakeData["GMId"]) {
+      handshakeData["GMId"] = {};
+    }
+    var GM = handshakeData["GMId"];
+    GM[groupId] = msgId;
+  };
+
+  var getGMId = function (socket, groupId) {
+    var handshakeData = socket.request;
+    if (!handshakeData["GMId"]) {
+      handshakeData["GMId"] = {};
+    }
+    var GM = handshakeData["GMId"];
+    if (!GM[groupId]) {
+      GM[groupId] = 0;
+    }
+    return GM[groupId];
+  };
+
+  var clearGMId = function (socket) {
+    var handshakeData = socket.request;
+    handshakeData["GMId"] = {};
+  };
+
+  var GlobalGM = {};
+
+
+  var GMIn = function (groupId, socket) {
+    if (!GlobalGM[groupId]) {
+      GlobalGM[groupId] = [];
+    }
+    var GM = GlobalGM[groupId];
+    GM.push(socket);
+  };
+
+  var GMOut = function (groupId, socket) {
+    if (!GlobalGM[groupId]) {
+      GlobalGM[groupId] = [];
+    }
+    var GM = GlobalGM[groupId];
+    var gl = GM.length;
+    while (gl--) {
+      var gms = GM[gl];
+      if (gms == socket) {
+        GM.splice(gl, 1);
+        break;
+      }
+    }
+  };
+
+  var GMAction = function (groupId) {
+    if (!GlobalGM[groupId]) {
+      GlobalGM[groupId] = [];
+    }
+    var GM = GlobalGM[groupId];
+    var gl = GM.length;
+    while (gl--) {
+      var socket = GM[gl];
+      postCM(groupId, socket);
+    }
+  };
+
+  var postCM = function (groupId, socket) {
+    var mid = getGMId(socket, groupId);
     var Msg = tools.getModelByName("Msg");
-    // body...
-    //
     Msg.find({
       where: {
-        and: [{
-          UserId: 1
-        },
-          {
-            id: {
-              between: [1,2]
-            }
-          }]
+        GroupId: groupId,
+        id: {
+          gt: mid
+        }
       },
-      include: {},
-      limit: 2,
-      order: ['PostTime ASC']
+      Order: ["id ASC"]
     }).then(function (msgList) {
-      // body...
-      socket.emit('AllMsg', msgList);
+      if (msgList.length > 0) {
+        var last = msgList[msgList.length - 1];
+        socket.emit("lastMsg", {
+          groupId: groupId,
+          msgList: msgList
+        }, function () {
+          setGMId(socket, groupId, last.id);
+        })
+      }
     }).catch(function (err) {
-      // body...
-      socket.emit('AllMsg', []);
-    })
-  }
 
+    })
+  };
   var chat = io
     .of('/chat')
     .on('connection', function (socket) {
 
-      socket.on("postMsg", function (msg, cb) {
+      socket.on("posting", function (msg, cb) {
         var Msg = tools.getModelByName("Msg");
         // PersistedModel
         // create
         //updateAll
-
+        var user = getUser(socket);
         //find
         Msg.create({
-          UserId: msg.userId,
-          UserName: msg.userName,
-          PostMsg: msg.postMsg,
+          GroupId: msg.groupId,
+          UserId: user.userId,
+          UserName: user.userName,
+          PostMsg: msg.msg,
           PostTime: tools.getCurrentDateTimeStr()
         }).then(function (data) {
-          // body...
-          console.log(data);
+          GMAction(msg.groupId);
           cb(data);
-          postAllMsg(socket);
         }).catch(function (err) {
-          // body...
           cb(err);
         })
-      })
+      });
+
+      socket.on("openGM", function (groupId) {
+        GMIn(groupId, socket);
+        postCM(groupId, socket);
+      });
+
+      socket.on("sign", function (user) {
+        setUser(socket, user);
+        clearGMId(socket);
+      });
       // body...
-      postAllMsg(socket);
     });
 };

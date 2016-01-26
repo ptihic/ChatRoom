@@ -8,17 +8,19 @@
 
       <div class="" v-for="talkTo in talkTos">
         <span
-          v-on:click="talking(talkTo.friendId)"
-          v-bind:class="[currentFid==talkTo.friendId?'active':'']"
+          v-on:click="talking(talkTo.friendId,talkTo.friendName,talkTo.groupId)"
+          v-bind:class="[currentGid==talkTo.groupId?'active':'']"
         >
           {{talkTo.friendName}}
         </span>
       </div>
       <template v-for="talkTo in talkTos">
         <chat-room
-          v-show="currentFid==talkTo.friendId"
+          v-show="currentGid == talkTo.groupId"
           v-bind:friend-id="talkTo.friendId"
+          v-bind:group-id="talkTo.groupId"
           v-bind:friend-name="talkTo.friendName"
+          v-bind:msg-list="talkTo.msgList"
           v-on:posting="posting"
         >
 
@@ -87,49 +89,49 @@
       return {
         talkTos: $this.talkTos,
         chat: this.chat,
-        currentFid: null,
+        currentGid: null,
         image1: require("./3.png"),
         image2: require("./2.png"),
         newTodo: "",
         IUserId: 1,
         IUserName: 'me',
-        postMsgList: [{
-          userId: 1,
-          userName: 'lss',
-          postMsg: '',
-          postTime: '2016-01-18 08:01:00'
-        }],
         friendList: this.friendList
       };
     },
     methods: {
-      talking: function (friendId, friendName) {
+      talking: function (friendId, friendName, groupId) {
         var $this = this;
         var talkTos = $this.talkTos;
         var tl = talkTos.length;
         var flag = true;
         while (tl--) {
           var talkTo = talkTos[tl];
-          if (talkTo.friendId == friendId) {
+          if (talkTo.groupId == groupId) {
             flag = false;
             break;
           }
         }
+        var $chat = $this.chat;
         if (flag) {
           talkTos.push({
             friendId: friendId,
-            friendName: friendName
-          })
+            friendName: friendName,
+            groupId: groupId,
+            msgList: []
+          });
+          $chat.emit("openGM", groupId);
         }
-        $this.currentFid = friendId;
-        var $chat = $this.chat;
+        $this.currentGid = groupId;
         //loadMsg;
       },
-      posting: function (friendId, msg) {
+      posting: function (groupId, msg) {
         var $this = this;
         var $chat = $this.chat;
-        $chat.emit('posting', function (res) {
-
+        $chat.emit('posting', {
+          groupId: groupId,
+          msg: msg
+        }, function (res) {
+          console.log(res);
         });
       }
     },
@@ -141,15 +143,38 @@
       //2.注册事件，for 接受消息
       var $chat = $this.chat = $this.$socket.connect('http://localhost:3001/chat');
       $chat.on('connect', function (res) {
-        $chat.emit('hi', function (res) {
+        var userInfo = tools.getUserInfo();
+        $chat.emit('sign', {userId: userInfo.userId, userName: userInfo.userName});
+
+        $chat.on("lastMsg", function (res, cb) {
           console.log(res);
+          var groupId = res.groupId;
+          var msgList = res.msgList;
+          var talkTos = $this.talkTos;
+          var tl = talkTos.length;
+          var talkTo;
+          while (tl--) {
+            var _talkTo = talkTos[tl];
+            if (_talkTo.groupId == groupId) {
+              talkTo = _talkTo;
+              break;
+            }
+          }
+          if (!talkTo) {
+            //单独处理
+            return;
+          }
+          for (var i = 0; i < msgList.length; i++) {
+            talkTo.msgList.push(msgList[i]);
+          }
+          cb();
         });
       });
     },
     created: function (argument) {
       // body...
       var $this = this;
-      $this.$http.get(tools.resolveUrl("/Friends/mine"),function (res) {
+      $this.$http.get(tools.resolveUrl("/Friends/mine"), function (res) {
         $this.friendList = res.friendList;
       })
     }
