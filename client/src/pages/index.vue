@@ -1,3 +1,38 @@
+<template xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+  <div class="am-g am-g-fixed blog-g-fixed">
+    <div class="am-u-md-7">
+      <h3 class="am-article-title blog-title">
+        <a href="#"> 欢迎登录聊天室 </a>
+      </h3>
+      <hr>
+
+      <div class="" v-for="talkTo in talkTos">
+        <span
+          v-on:click="talking(talkTo.friendId)"
+          v-bind:class="[currentFid==talkTo.friendId?'active':'']"
+        >
+          {{talkTo.friendName}}
+        </span>
+      </div>
+      <template v-for="talkTo in talkTos">
+        <chat-room
+          v-show="currentFid==talkTo.friendId"
+          v-bind:friend-id="talkTo.friendId"
+          v-bind:friend-name="talkTo.friendName"
+          v-on:posting="posting"
+        >
+
+        </chat-room>
+      </template>
+    </div>
+    <friend-list
+      v-bind:friend-list="friendList"
+      v-on:talking="talking"
+
+    >
+    </friend-list>
+  </div>
+</template>
 <style media="screen">
   ul.friendlist a {
     /*color: #fff;*/
@@ -21,78 +56,6 @@
     height: 200px;
   }
 </style>
-<template xmlns:v-on="http://www.w3.org/1999/xhtml">
-  <div class="am-g am-g-fixed blog-g-fixed">
-    <div class="am-u-md-7">
-      <h3 class="am-article-title blog-title">
-        <a href="#"> 欢迎登录聊天室 </a>
-      </h3>
-      <hr></hr>
-      <div class="chatroom">
-        <div class="am-g content" id="content">
-          <div class="am-u-lg-12 am-center">
-            <ul class="am-comments-list am-comments-list-flip">
-              <template v-for='msg  in postMsgList'>
-                <li class="am-comment " v-bind:class="[msg.userId==IUserId?'am-comment-flip':'']">
-                  <a href="#link-to-user-home">
-                    <img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96" alt=""
-                         class="am-comment-avatar" width="48" height="48">
-                    <div class="am-comment-main">
-                      <header class="am-comment-hd">
-                        <div class="am-comment-meta">
-                          <a href="#link-to-user" class="am-comment-author">{{msg.userName}}</a>发表于
-                          <time>{{msg.postTime}}</time>
-                        </div>
-                      </header>
-                      <div class="am-comment-bd">
-                        <p>{{msg.postMsg}}</p>
-                      </div>
-                    </div>
-                </li>
-              </template>
-            </ul>
-            <p></p>
-          </div>
-        </div>
-        <hr class="am-article-divider blog-hr">
-        <div class="text">
-          <form class="" action="index.html" method="post">
-            <div class="am-form-group">
-              <label for="doc-ta-1">请输入对话内容</label>
-              </br>
-              <!-- <a>
-                <img id="icon1" v-bind:src="image1"   alt=""/>
-              </a> -->
-              <a>
-                <!-- <img id="icon2" v-bind:src="image2"  alt=""/> -->
-                <div class='img2'></div>
-              </a>
-              <input id="txt" type="text" v-model='newTodo'>
-
-              <a id="link" href="javascript:void(0)" v-on:click.stop="addTodo">发送</a>
-            </div>
-          </form>
-        </div>
-        <hr class="am-article-divider blog-hr">
-      </div>
-    </div>
-    <div class="am-u-md-4 blog-sidebar" style="background: #eeeeee;height: 1000px">
-      <div class="am-panel-hd">好友列表</div>
-      <ul class="am-list admin-sidebar-list" id="collapase-nav-1">
-        <li class="am-panel">
-          <a data-am-collapse="{parent: '#collapase-nav-1', target: '#role-nav'}">
-            冰淇淋 <i class="am-icon-angle-right am-fr am-margin-right"></i>
-          </a>
-          <ul class="am-list am-collapse admin-sidebar-sub" id="role-nav">
-            <template v-for='friend  in friendList'>
-              <li><a>{{friend.FriendName}}</a></li>
-            </template>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</template>
 <style lang='less'>
   .img2 {
     background: url("1.png") no-repeat;
@@ -100,7 +63,6 @@
     width: 25px;
     height: 25px;
   }
-
 </style>
 <script type="text/javascript">
   var def = {
@@ -113,11 +75,19 @@
   var tools = require("../tools.js");
   var defIco = "/userImage/userid_360x360.png";
   module.exports = {
+    components: {
+      "friend-list": require("../components/friendList.vue"),
+      "chat-room": require("../components/chatRoom.vue")
+    },
     data: function () {
+      var $this = this;
+      if (!$this.talkTos) {
+        $this.talkTos = [];
+      }
       return {
-        chat:this.chat,
-        friendId: 2,
-        friendName: 'friend',
+        talkTos: $this.talkTos,
+        chat: this.chat,
+        currentFid: null,
         image1: require("./3.png"),
         image2: require("./2.png"),
         newTodo: "",
@@ -128,72 +98,49 @@
           userName: 'lss',
           postMsg: '',
           postTime: '2016-01-18 08:01:00'
-        }
-          // {
-          //   userId: 2,
-          //   userName: 'zx',
-          //   postMsg: 'Hi',
-          //   postTime: '2016-01-18 08:02:00'
-          // }
-          // {
-          //   userId: 1,
-          //   userName: 'lss',
-          //   postMsg: 'Are you ok?',
-          //   postTime: '2016-01-18 08:03:00'
-          // }
-        ],
+        }],
         friendList: this.friendList
       };
-
     },
     methods: {
-      addTodo: function () {
+      talking: function (friendId, friendName) {
         var $this = this;
-        var text = $this.newTodo.trim()
-        if (true) {
-          $this.chat.emit('postMsg',{
-            userId: $this.IUserId,
-            userName: $this.IUserName,
-            postMsg: text,
-            postTime: tools.getCurrentDateTimeStr()
-          },function(res){
-            console.log(res);
+        var talkTos = $this.talkTos;
+        var tl = talkTos.length;
+        var flag = true;
+        while (tl--) {
+          var talkTo = talkTos[tl];
+          if (talkTo.friendId == friendId) {
+            flag = false;
+            break;
+          }
+        }
+        if (flag) {
+          talkTos.push({
+            friendId: friendId,
+            friendName: friendName
           })
         }
-        if (false) {
-          $this.$http.post(tools.resolveUrl("/Msgs/"), {
-            userId: $this.IUserId,
-            userName: $this.IUserName,
-            postMsg: text,
-            postTime: tools.getCurrentDateTimeStr()
-          }, function () {
-            $this.postMsgList.push()
-          })
-
-        }
-        $this.newTodo = '';
+        $this.currentFid = friendId;
+        var $chat = $this.chat;
+        //loadMsg;
       },
-      show: function () {
+      posting: function (friendId, msg) {
+
       }
     },
-    ready: function(){
-      var $this=this;
+    ready: function () {
+      var $this = this;
       //进入页面
       //todo ：
       //1.connect 告诉大家我上线了
       //2.注册事件，for 接受消息
-      var chat =$this.$socket.connect('http://localhost:3001/chat');
-      chat.on('connect', function (res) {
-        chat.emit('hi',function(res){
+      var $chat = $this.chat = $this.$socket.connect('http://localhost:3001/chat');
+      $chat.on('connect', function (res) {
+        $chat.emit('hi', function (res) {
           console.log(res);
         });
-
-        chat.on("AllMsg",function (msgList) {
-          // body...
-          console.log(msgList);
-        })
       });
-      $this.chat=chat;
     },
     created: function (argument) {
       // body...
