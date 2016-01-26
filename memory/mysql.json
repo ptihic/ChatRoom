@@ -1,12 +1,12 @@
 {
   "ids": {
     "User": 8,
-    "UserToken": 51,
+    "UserToken": 72,
     "VisitLog": 1,
     "OptionLog": 1,
     "Code": 1,
     "Friend": 7,
-    "Msg": 1,
+    "Msg": 9,
     "Group": 1
   },
   "models": {
@@ -69,7 +69,28 @@
       "47": "{\"userId\":1,\"tokenInfo\":\"4ccd67b4-aa39-4b3d-b78d-676ba49276a3\",\"id\":47,\"state\":1}",
       "48": "{\"userId\":1,\"tokenInfo\":\"4d57d3d5-4ead-44de-8703-23b45b818654\",\"id\":48,\"state\":1}",
       "49": "{\"userId\":1,\"tokenInfo\":\"e13d823b-fcc4-4dee-bb94-6c5205baa6e3\",\"id\":49,\"state\":1}",
-      "50": "{\"userId\":1,\"tokenInfo\":\"84ef17f4-9cf8-4c58-ae0f-f951fcd36050\",\"id\":50,\"state\":1}"
+      "50": "{\"userId\":1,\"tokenInfo\":\"84ef17f4-9cf8-4c58-ae0f-f951fcd36050\",\"id\":50,\"state\":1}",
+      "51": "{\"userId\":4,\"tokenInfo\":\"0fbf671f-0d0d-45f0-8db7-8261f1616200\",\"id\":51,\"state\":1}",
+      "52": "{\"userId\":4,\"tokenInfo\":\"f661f374-8f5f-4ee1-8ab5-442b9bfa00b0\",\"id\":52,\"state\":1}",
+      "53": "{\"userId\":4,\"tokenInfo\":\"7ddd2f84-1e2b-4386-933b-9f650787a78d\",\"id\":53,\"state\":1}",
+      "54": "{\"userId\":4,\"tokenInfo\":\"c6fde6e1-beb6-47b9-88c3-77f423c29f8c\",\"id\":54,\"state\":1}",
+      "55": "{\"userId\":4,\"tokenInfo\":\"2ceb83ff-cf98-4178-ac32-ecc5919b7993\",\"id\":55,\"state\":1}",
+      "56": "{\"userId\":4,\"tokenInfo\":\"ead670de-1a30-4262-afec-fe214eb48acb\",\"id\":56,\"state\":1}",
+      "57": "{\"userId\":4,\"tokenInfo\":\"4988553e-b47f-41ff-b0fd-acf56b3e2389\",\"id\":57,\"state\":1}",
+      "58": "{\"userId\":4,\"tokenInfo\":\"d67dd3b0-c449-49b5-829b-c1d4bd1d601a\",\"id\":58,\"state\":1}",
+      "59": "{\"userId\":4,\"tokenInfo\":\"b792970f-6408-42b3-9512-ef72973d2433\",\"id\":59,\"state\":1}",
+      "60": "{\"userId\":4,\"tokenInfo\":\"58f7b5f0-5c5b-4611-8ee5-e3c6b6305907\",\"id\":60,\"state\":1}",
+      "61": "{\"userId\":4,\"tokenInfo\":\"0d45944e-c26b-4606-983a-e902f6f02910\",\"id\":61,\"state\":1}",
+      "62": "{\"userId\":4,\"tokenInfo\":\"a6365601-d9be-474a-8b71-7a4e36f9bf7e\",\"id\":62,\"state\":1}",
+      "63": "{\"userId\":4,\"tokenInfo\":\"f16e37e0-3b51-4929-b1b7-6b47b258c0cf\",\"id\":63,\"state\":1}",
+      "64": "{\"userId\":4,\"tokenInfo\":\"6f371719-e4e8-4178-900f-146ab8aba1a3\",\"id\":64,\"state\":1}",
+      "65": "{\"userId\":4,\"tokenInfo\":\"b1f6b671-fb58-4601-bbd8-a5678aadccff\",\"id\":65,\"state\":1}",
+      "66": "{\"userId\":4,\"tokenInfo\":\"82bdefa7-b06f-4f8b-b660-3e3fb47dc463\",\"id\":66,\"state\":1}",
+      "67": "{\"userId\":4,\"tokenInfo\":\"8d45aaaf-e8f9-46bf-81e6-0f5fa5a514af\",\"id\":67,\"state\":1}",
+      "68": "{\"userId\":4,\"tokenInfo\":\"99ae2a7b-c307-4d49-be65-2a06c47b8ab9\",\"id\":68,\"state\":1}",
+      "69": "{\"userId\":4,\"tokenInfo\":\"53948565-6094-43de-9959-9feecc008022\",\"id\":69,\"state\":1}",
+      "70": "{\"userId\":4,\"tokenInfo\":\"f3d2b662-0505-4971-897f-f10f5bf6e022\",\"id\":70,\"state\":1}",
+      "71": "{\"userId\":4,\"tokenInfo\":\"2da07fb1-374b-4e2a-b8a6-52157a8e8505\",\"id\":71,\"state\":1}"
     },
     "VisitLog": {},
     "OptionLog": {},
@@ -80,7 +101,16 @@
       "3": "{\"UserId\":0,\"FriendId\":4,\"FriendName\":\"杨继文\",\"id\":3}",
       "4": "{\"UserId\":0,\"FriendId\":5,\"FriendName\":\"肖性魁\",\"id\":4}"
     },
-    "Msg": {},
+    "Msg": {
+      "1": "{\"UserId\":1,\"UserName\":\"me\",\"PostTime\":\"Mon Jan 25 2016 11:03:18 GMT+0800 (CST)\",\"PostMsg\":\"1212\",\"id\":1}",
+      "2": "{\"UserId\":1,\"UserName\":\"me\",\"PostTime\":\"Mon Jan 25 2016 11:04:31 GMT+0800 (CST)\",\"PostMsg\":\"22222\",\"id\":2}",
+      "3": "{\"UserId\":1,\"UserName\":\"me\",\"PostTime\":\"Mon Jan 25 2016 11:18:36 GMT+0800 (CST)\",\"PostMsg\":\"1212\",\"id\":3}",
+      "4": "{\"UserId\":1,\"UserName\":\"me\",\"PostTime\":\"Mon Jan 25 2016 11:18:45 GMT+0800 (CST)\",\"PostMsg\":\"1212\",\"id\":4}",
+      "5": "{\"UserId\":1,\"UserName\":\"me\",\"PostTime\":\"2016-01-25 11:21:53\",\"PostMsg\":\"asdfasdf\",\"id\":5}",
+      "6": "{\"UserId\":1,\"UserName\":\"me\",\"PostTime\":\"2016-01-25 15:27:40\",\"PostMsg\":\"lss\",\"id\":6}",
+      "7": "{\"UserId\":1,\"UserName\":\"me\",\"PostTime\":\"2016-01-25 16:14:21\",\"PostMsg\":\"l m l\",\"id\":7}",
+      "8": "{\"UserId\":1,\"UserName\":\"me\",\"PostTime\":\"2016-01-26 09:07:00\",\"PostMsg\":\"lss\",\"id\":8}"
+    },
     "Group": {}
   }
 }

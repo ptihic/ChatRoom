@@ -12,7 +12,7 @@
   }
 
   .content {
-    height: 600px;
+    height: 300px;
     background: #eee;
   }
 
@@ -76,7 +76,7 @@
         <hr class="am-article-divider blog-hr">
       </div>
     </div>
-    <div class="am-u-md-4 blog-sidebar" style="background: #eeeeee">
+    <div class="am-u-md-4 blog-sidebar" style="background: #eeeeee;height: 1000px">
       <div class="am-panel-hd">好友列表</div>
       <ul class="am-list admin-sidebar-list" id="collapase-nav-1">
         <li class="am-panel">
@@ -115,6 +115,7 @@
   module.exports = {
     data: function () {
       return {
+        chat:this.chat,
         friendId: 2,
         friendName: 'friend',
         image1: require("./3.png"),
@@ -125,21 +126,22 @@
         postMsgList: [{
           userId: 1,
           userName: 'lss',
-          postMsg: 'Hello',
+          postMsg: '',
           postTime: '2016-01-18 08:01:00'
-        },
-          {
-            userId: 2,
-            userName: 'zx',
-            postMsg: 'Hi',
-            postTime: '2016-01-18 08:02:00'
-          },
-          {
-            userId: 1,
-            userName: 'lss',
-            postMsg: 'Are you ok?',
-            postTime: '2016-01-18 08:03:00'
-          }],
+        }
+          // {
+          //   userId: 2,
+          //   userName: 'zx',
+          //   postMsg: 'Hi',
+          //   postTime: '2016-01-18 08:02:00'
+          // }
+          // {
+          //   userId: 1,
+          //   userName: 'lss',
+          //   postMsg: 'Are you ok?',
+          //   postTime: '2016-01-18 08:03:00'
+          // }
+        ],
         friendList: this.friendList
       };
 
@@ -149,14 +151,12 @@
         var $this = this;
         var text = $this.newTodo.trim()
         if (true) {
-          var chat =$this.$socket.connect('http://localhost:3001/chat');
-          chat.on('connect', function (res) {
-            console.log(res);
-            chat.emit('hi',"fuck",function(res){
-              console.log(res);
-            });
-          });
-          chat.on("h1",function(res){
+          $this.chat.emit('postMsg',{
+            userId: $this.IUserId,
+            userName: $this.IUserName,
+            postMsg: text,
+            postTime: tools.getCurrentDateTimeStr()
+          },function(res){
             console.log(res);
           })
         }
@@ -175,6 +175,25 @@
       },
       show: function () {
       }
+    },
+    ready: function(){
+      var $this=this;
+      //进入页面
+      //todo ：
+      //1.connect 告诉大家我上线了
+      //2.注册事件，for 接受消息
+      var chat =$this.$socket.connect('http://localhost:3001/chat');
+      chat.on('connect', function (res) {
+        chat.emit('hi',function(res){
+          console.log(res);
+        });
+
+        chat.on("AllMsg",function (msgList) {
+          // body...
+          console.log(msgList);
+        })
+      });
+      $this.chat=chat;
     },
     created: function (argument) {
       // body...
