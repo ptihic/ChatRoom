@@ -7,7 +7,7 @@
   },
   "properties": {
     "GroupId": {
-      "type": "number",
+      "type": "string",
       "required": true
     },
     "UserId": {

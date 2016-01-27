@@ -3,7 +3,7 @@
     <div class="am-g content" id="content">
       <div class="am-u-lg-12 am-center">
         <ul class="am-comments-list am-comments-list-flip">
-          <template v-for='msg  in postMsgList'>
+          <template v-for='msg  in msgList'>
             <li class="am-comment " v-bind:class="[msg.userId==IUserId?'am-comment-flip':'']">
               <a href="#link-to-user-home">
                 <img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96" alt=""
@@ -11,12 +11,12 @@
                 <div class="am-comment-main">
                   <header class="am-comment-hd">
                     <div class="am-comment-meta">
-                      <a href="#link-to-user" class="am-comment-author">{{msg.userName}}</a>发表于
-                      <time>{{msg.postTime}}</time>
+                      <a href="#link-to-user" class="am-comment-author">{{msg.UserName}}</a>发表于
+                      <time>{{msg.PostTime}}</time>
                     </div>
                   </header>
                   <div class="am-comment-bd">
-                    <p>{{msg.postMsg}}</p>
+                    <p>{{msg.PostMsg}}</p>
                   </div>
                 </div>
             </li>
@@ -40,7 +40,7 @@
           </a>
           <input id="txt" type="text" v-model='cMsg'>
 
-          <a id="link" href="javascript:void(0)" v-on:click.stop="postMsg">发送</a>
+          <a id="link" href="javascript:void(0)" v-on:click="postMsg">发送</a>
         </div>
       </form>
     </div>
@@ -53,20 +53,26 @@
       var $this = this;
       return {
         friendList: $this.friendList,
+        groupId: $this.groupId,
+        friendId: $this.friendId,
+        friendName: $this.friendName,
+        msgList: $this.msgList,
         cMsg: $this.cMsg
       }
     },
-    props: ["msgList", "friendId", "friendName"],
-    method: {
+    props: ["msgList", "friendId", "groupId", "friendName"],
+    methods: {
       postMsg: function () {
         var $this = this;
+        console.log($this.groupId);
+        console.log($this.cMsg);
         if ($this.cMsg) {
-          $this.dispatch("posting", $this.friendId, $this.cMsg);
+          $this.$dispatch("posting", $this.groupId, $this.cMsg);
         }
       }
     },
     create: function () {
-
+      console.log(this.groupId);
     }
   }
 </script>

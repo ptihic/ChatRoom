@@ -1,12 +1,12 @@
 {
   "ids": {
     "User": 4,
-    "UserToken": 4,
+    "UserToken": 17,
     "VisitLog": 1,
     "OptionLog": 1,
     "Code": 1,
     "Friend": 5,
-    "Msg": 1,
+    "Msg": 14,
     "Group": 5
   },
   "models": {
@@ -18,7 +18,20 @@
     "UserToken": {
       "1": "{\"userId\":1,\"tokenInfo\":\"593295ff-0f62-4b6f-b9f0-ce37c29e0b6a\",\"id\":1,\"state\":1}",
       "2": "{\"userId\":1,\"tokenInfo\":\"7b132898-46dd-49d0-9568-74720b76f626\",\"id\":2,\"state\":1}",
-      "3": "{\"userId\":1,\"tokenInfo\":\"8ebdeb51-ed1c-4e43-82ca-6cf2b8f67c85\",\"id\":3,\"state\":1}"
+      "3": "{\"userId\":1,\"tokenInfo\":\"8ebdeb51-ed1c-4e43-82ca-6cf2b8f67c85\",\"id\":3,\"state\":1}",
+      "4": "{\"userId\":1,\"tokenInfo\":\"2a5a7a58-db6d-483d-a2ec-554564f8a345\",\"id\":4,\"state\":1}",
+      "5": "{\"userId\":1,\"tokenInfo\":\"33c47c4a-3df1-4fd6-a95c-56cda513ac65\",\"id\":5,\"state\":1}",
+      "6": "{\"userId\":1,\"tokenInfo\":\"ccb8cb5a-69df-4d61-95a2-72b8db59cd39\",\"id\":6,\"state\":1}",
+      "7": "{\"userId\":1,\"tokenInfo\":\"28287bfa-da68-4d13-8580-8d704dac30a9\",\"id\":7,\"state\":1}",
+      "8": "{\"userId\":1,\"tokenInfo\":\"eadcf439-5ba0-4080-8573-8e15542898d0\",\"id\":8,\"state\":1}",
+      "9": "{\"userId\":1,\"tokenInfo\":\"6a0e14dd-3063-442f-9647-3503285a0a64\",\"id\":9,\"state\":1}",
+      "10": "{\"userId\":1,\"tokenInfo\":\"64559dff-f671-41f5-b7db-671284ee9907\",\"id\":10,\"state\":1}",
+      "11": "{\"userId\":1,\"tokenInfo\":\"76b329ba-1520-4185-8d3d-c65a3c1d359e\",\"id\":11,\"state\":1}",
+      "12": "{\"userId\":1,\"tokenInfo\":\"545c3580-29d0-4524-a4a7-fb3906567f17\",\"id\":12,\"state\":1}",
+      "13": "{\"userId\":1,\"tokenInfo\":\"1c1ad786-9672-47be-8ded-19dbf6c42b2f\",\"id\":13,\"state\":1}",
+      "14": "{\"userId\":2,\"tokenInfo\":\"9883a257-66c2-4cbd-a3c1-d85ecf4adf26\",\"id\":14,\"state\":1}",
+      "15": "{\"userId\":1,\"tokenInfo\":\"85506773-0ba7-48cb-ac3a-6c2ae45d80e2\",\"id\":15,\"state\":1}",
+      "16": "{\"userId\":2,\"tokenInfo\":\"a6772e63-1ccc-4f4f-9f14-b408e7bb7189\",\"id\":16,\"state\":1}"
     },
     "VisitLog": {},
     "OptionLog": {},
@@ -29,7 +42,21 @@
       "3": "{\"GroupId\":\"1bc12a78-c4da-4f4f-a5e8-d67f06f98282\",\"UserId\":1,\"FriendId\":3,\"FriendName\":\"用户\",\"id\":3}",
       "4": "{\"GroupId\":\"1bc12a78-c4da-4f4f-a5e8-d67f06f98282\",\"UserId\":3,\"FriendId\":1,\"FriendName\":\"管理员\",\"id\":4}"
     },
-    "Msg": {},
+    "Msg": {
+      "1": "{\"GroupId\":\"843ee95e-ad09-4b10-a399-7797f005e740\",\"UserId\":1,\"UserName\":\"管理员\",\"PostTime\":\"2016-01-26 17:26:57\",\"PostMsg\":\"123123\",\"id\":1}",
+      "2": "{\"GroupId\":\"1bc12a78-c4da-4f4f-a5e8-d67f06f98282\",\"UserId\":1,\"UserName\":\"管理员\",\"PostTime\":\"2016-01-26 18:09:54\",\"PostMsg\":\"to 用户\",\"id\":2}",
+      "3": "{\"GroupId\":\"1bc12a78-c4da-4f4f-a5e8-d67f06f98282\",\"UserId\":1,\"UserName\":\"管理员\",\"PostTime\":\"2016-01-26 18:13:44\",\"PostMsg\":\"to 用户3\",\"id\":3}",
+      "4": "{\"GroupId\":\"1bc12a78-c4da-4f4f-a5e8-d67f06f98282\",\"UserId\":1,\"UserName\":\"管理员\",\"PostTime\":\"2016-01-26 18:14:49\",\"PostMsg\":\"o 用户3\",\"id\":4}",
+      "5": "{\"GroupId\":\"1bc12a78-c4da-4f4f-a5e8-d67f06f98282\",\"UserId\":1,\"UserName\":\"管理员\",\"PostTime\":\"2016-01-26 18:14:52\",\"PostMsg\":\"o 用户311\",\"id\":5}",
+      "6": "{\"GroupId\":\"843ee95e-ad09-4b10-a399-7797f005e740\",\"UserId\":1,\"UserName\":\"管理员\",\"PostTime\":\"2016-01-26 18:14:57\",\"PostMsg\":\"22\",\"id\":6}",
+      "7": "{\"GroupId\":\"843ee95e-ad09-4b10-a399-7797f005e740\",\"UserId\":1,\"UserName\":\"管理员\",\"PostTime\":\"2016-01-26 18:16:39\",\"PostMsg\":\"22\",\"id\":7}",
+      "8": "{\"GroupId\":\"843ee95e-ad09-4b10-a399-7797f005e740\",\"UserId\":2,\"UserName\":\"测试员\",\"PostTime\":\"2016-01-26 18:16:48\",\"PostMsg\":\"1122\",\"id\":8}",
+      "9": "{\"GroupId\":\"843ee95e-ad09-4b10-a399-7797f005e740\",\"UserId\":1,\"UserName\":\"管理员\",\"PostTime\":\"2016-01-26 18:17:01\",\"PostMsg\":\"2212\",\"id\":9}",
+      "10": "{\"GroupId\":\"843ee95e-ad09-4b10-a399-7797f005e740\",\"UserId\":1,\"UserName\":\"管理员\",\"PostTime\":\"2016-01-26 18:18:55\",\"PostMsg\":\"122\",\"id\":10}",
+      "11": "{\"GroupId\":\"843ee95e-ad09-4b10-a399-7797f005e740\",\"UserId\":2,\"UserName\":\"测试员\",\"PostTime\":\"2016-01-26 18:19:00\",\"PostMsg\":\"1212\",\"id\":11}",
+      "12": "{\"GroupId\":\"843ee95e-ad09-4b10-a399-7797f005e740\",\"UserId\":2,\"UserName\":\"测试员\",\"PostTime\":\"2016-01-26 18:19:10\",\"PostMsg\":\"ttttt\",\"id\":12}",
+      "13": "{\"GroupId\":\"843ee95e-ad09-4b10-a399-7797f005e740\",\"UserId\":1,\"UserName\":\"管理员\",\"PostTime\":\"2016-01-26 18:19:24\",\"PostMsg\":\"aaaa\",\"id\":13}"
+    },
     "Group": {
       "1": "{\"GroupId\":\"843ee95e-ad09-4b10-a399-7797f005e740\",\"UserId\":1,\"id\":1}",
       "2": "{\"GroupId\":\"843ee95e-ad09-4b10-a399-7797f005e740\",\"UserId\":2,\"id\":2}",

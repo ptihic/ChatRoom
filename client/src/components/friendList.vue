@@ -5,7 +5,7 @@
       <li class="am-panel">
         <ul class="am-list " id="role-nav">
           <template v-for='friend  in friendList'>
-            <li v-on:click="talkingTo(friend.id,friend.FriendName)"><a>{{friend.FriendName}}</a></li>
+            <li v-on:click="talkingTo(friend.id,friend.FriendName,friend.GroupId)"><a>{{friend.FriendName}}</a></li>
           </template>
         </ul>
       </li>
@@ -25,9 +25,9 @@
     },
     props: ["friendList"],
     methods: {
-      talkingTo: function (UserId, FriendName) {
+      talkingTo: function (UserId, FriendName,GroupId) {
         var $this = this;
-        $this.$dispatch("talking", UserId, FriendName);
+        $this.$dispatch("talking", UserId, FriendName,GroupId);
       }
     }
   }
